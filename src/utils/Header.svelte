@@ -1,10 +1,29 @@
-<!-- <script>
-	import { loggedIn } from '../stores/store';
-	import { logOut } from './auth';
+<script>
+	// point to note - shaun to do logout function
+
+	import { userLoggedIn } from '../stores/store';
+	import { userLogOut, getUserTokenFromLocalStorage } from './auth';
 	import { goto } from '$app/navigation';
+	// import { io } from '../socket/webSocketConnection.js';
+	// import { onMount } from 'svelte';
+	// import { appointmentsWaiting } from '../stores/store';
+
+	// onMount(() => {
+	// 	io.on('connect_error', (error) => {
+	// 		console.error('Connection error:', error);
+	// 	});
+
+	// 	io.on('connected', (name) => {
+	// 		console.log(`socket connected ${name}`);
+	// 	});
+
+	// 	io.on('new_patient_appointment', ({ appointment }) => {
+	// 		appointmentsWaiting.update((appointments) => [...appointments, appointment]);
+	// 	});
+	// });
 
 	let logIO;
-	loggedIn.subscribe((value) => {
+	userLoggedIn.subscribe((value) => {
 		logIO = value;
 	});
 
@@ -12,26 +31,13 @@
 		goto('/sign-in');
 	}
 
-	function clickMyImages() {
-		goto('/my-images');
-	}
-
-	function clickSignUp() {
-		goto('/users/new');
-	}
-
 	function clickHome() {
 		goto('/');
 	}
-
-	function clickUpload() {
-		goto('/upload');
-	}
-</script> -->
+</script>
 
 <main>
-	<p class="bg-black text-white">AUTO WHATSAPP</p>
-	<!-- <div class="bg-black text-white">
+	<div class="bg-black text-white">
 		<div class="container mx-auto flex justify-between items-center p-4">
 			<button
 				class="bg-black text-white p-3 rounded-full hover:bg-gray-900 focus:outline-none"
@@ -45,33 +51,15 @@
 			</button>
 			<div class="flex space-x-4">
 				{#if logIO === true}
-					<button
-						class="text-white hover:text-indigo-600 focus:outline-none"
-						on:click={clickUpload}
-					>
-						Upload Image
-					</button>
-					<button
-						class="text-white hover:text-indigo-600 focus:outline-none"
-						on:click={clickMyImages}
-					>
-						My Images
-					</button>
-					<button class="text-white hover:text-indigo-600 focus:outline-none" on:click={logOut}>
+					<button class="text-white hover:text-indigo-600 focus:outline-none" on:click={userLogOut}>
 						Log Out
 					</button>
 				{:else}
 					<button class="text-white hover:text-indigo-600 focus:outline-none" on:click={clickLogin}>
 						Log In
 					</button>
-					<button
-						class="text-white hover:text-indigo-600 focus:outline-none"
-						on:click={clickSignUp}
-					>
-						Sign Up
-					</button>
 				{/if}
 			</div>
 		</div>
-	</div> -->
+	</div>
 </main>

@@ -18,14 +18,14 @@
 		bulk.set(true);
 	}
 
-	export async function individualWhatsappDetails() {
+	export async function individualWhatsappDetails(evt) {
 		const newInidividualWhatsappData = {
 			name: evt.target['name'].value,
-			number: parseInt(evt.target['number'].value),
+			number: evt.target['number'].value,
 			message: evt.target['message'].value
 		};
 
-		const resp = await fetch(PUBLIC_BACKEND_BASE_URL + '/new-individual-whatsapp', {
+		const resp = await fetch(PUBLIC_BACKEND_BASE_URL + '/new-individual-sms', {
 			method: 'POST',
 			mode: 'cors',
 			headers: {
@@ -120,7 +120,7 @@
 				<div class="mb-6">
 					<label for="number" class="block text-gray-700 text-sm font-bold mb-2"> Number * </label>
 					<input
-						type="number"
+						type="text"
 						name="number"
 						placeholder="Enter mobile number"
 						class="block w-full rounded-md py-2 px-3 border border-gray-300"
